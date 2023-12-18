@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+    <body>
+            <input type="hidden" id="cr" th:value="${paint}">
+            <div class="body">
+                <div class="index">
+                    <div class="item">
+                        <form th:action="@{/device}">
+                            
+                            <input type="submit" id="device" value="Thiết bị" class="index2">
+                        </form>
+                    </div>
+                    <div class="item">
+                        <form th:action="@{/notification}">
+							
+                            <input type="submit" id="notif" value="Thông báo" class="index2">
+                        </form>
+                    </div>
+                    <div class="item">
+                        <form th:action="@{/history}">
+
+                            <input type="submit" id="his" value="Lịch sử đóng/mở cửa" class="index2">
+                        </form>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="row-content">
+                        <div class="row">
+                          <span><b>Time</b></span>                          
+                        </div>
+                        <div class="row" style="border-right: none;">
+                            <span><b>Status</b></span>                          
+                        </div>
+                    </div>
+                    <div class="row-content" th:each="i:${ds_his}">
+                        <div class="row">
+                          <span th:text="${i._time}">Time2</span>                          
+                        </div>
+                        <div class="row" style="border-right: none;">
+                            <span th:text="${i._status}">Message2</span><br>      
+                            
+                    
+                        </div>
+                    </div>
+                    
+                </div>   
+            </div>
+            <script> 
+           
+               const input = document.getElementById('cr');
+                const inputValue = input.value;
+                document.getElementById(inputValue).style.backgroundColor="blue";
+            </script>
+    </body>
+</html>

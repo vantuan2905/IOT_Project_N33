@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+    <body>
+            <input type="hidden" id="cr" th:value="${paint}">
+            <div class="body">
+                <div class="index">
+                    <div class="item">
+                        <form action="device">
+                            
+                            <input type="submit" id="device" value="Thiết bị">
+                        </form>
+                    </div>
+                    <div class="item">
+                        <form th:action="@{/notification}">
+							
+                            <input type="submit" id="notif" value="Thông báo">
+                        </form>
+                    </div>
+                    <div class="item">
+                        <form th:action="@{/history}">
+
+                            <input type="submit" id="his" value="Lịch sử đóng/mở cửa">
+                        </form>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="sub-content">
+                            <label>Đèn:</label>
+                            <form th:action="@{/control}" method="get">	
+                            	<input type="hidden" name="device" value="led1">
+                                <input type="submit" id="bt1" th:value="${led1}" class="bt">
+                            </form>
+                    </div>
+                <hr>
+                    <div class="sub-content">
+                        <label>Khóa cửa1:</label>
+                        <form th:action="@{/control}" method="get">
+                       		 <input type="hidden" name="device" value="lock">
+                            <input type="submit" id="bt2" th:value="${lock}" class="bt">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <script>
+                const input = document.getElementById('cr');
+                const inputValue = input.value;
+                document.getElementById(inputValue).style.backgroundColor="blue";
+                //button1
+                
+                const bt=document.getElementById('bt1');
+                const bt_value1=bt.value;
+                console.log(bt_value1)
+                if(bt_value1=='ON') document.getElementById('bt1').style.backgroundColor="green";
+                else document.getElementById('bt1').style.backgroundColor="red";
+                
+                //button2
+                
+                const bt2=document.getElementById('bt2');
+                const bt_value2=bt2.value;
+                console.log(bt_value2)
+                if(bt_value2=='ON') document.getElementById('bt2').style.backgroundColor="green";
+                else document.getElementById('bt2').style.backgroundColor="red";
+            </script>
+    </body>
+</html>
